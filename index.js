@@ -9,7 +9,7 @@ const rl = readline.createInterface({
 const post = bent('https://api.hisac.computer/', 'POST', 'json', 200);
 
 rl.on('line', async (line) => {
-  word = line.replace(/[\r\n]+$/g,''); // strip trailing new line chars
+  const word = line.replace(/[\r\n]+$/g,''); // strip trailing new line chars
   const response = await post('command', {'func':'open','directory':'ARCHIVES/','args':['FREEBIRD','-k',word]});
   if ('content' in response) // bingo
   {
