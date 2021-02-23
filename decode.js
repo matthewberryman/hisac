@@ -10,7 +10,7 @@ const post = bent('https://api.hisac.computer/', 'POST', 'json', 200);
 
 main = async () => {
   const SWIFT = (await post('command', {'func':'list','directory':'ARCHIVES/','args':['SWIFT']})).content;
-  const methodGuesses = ['list','decode','base64decode','ECB','deciper','decrypt','open','unlock','B64'];
+  const methodGuesses = ['list','decode','base64decode','ECB','deciper','decrypt', 'decryption', 'open','unlock','B64'];
   const keyGuesses = ['Fe2O3', 'ironoxide', 'this', 'candle'];
   const payloadGuesses = [SWIFT, 'SWIFT'];
   methodGuesses.forEach(async (method) => {
