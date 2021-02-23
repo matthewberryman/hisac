@@ -6,6 +6,12 @@ const rl = readline.createInterface({
   input: fs.createReadStream('guesses.txt')
 });
 
+const sb = (inArray) => {
+  return inArray.map((item) => {
+    return '['+item+']';
+  });
+}
+
 const post = bent('https://api.hisac.computer/', 'POST', 'json', 200);
 
 main = async () => {
@@ -17,6 +23,8 @@ main = async () => {
     keyGuesses.forEach(async (key) => {
       payloadGuesses.forEach(async (payload) => {
         // console.log('trying',method,key,payload);
+        const response = await post('command', {'func':'freebird','directory':'ARCHIVES/','args':sb([method,key,payload])});
+        console.log(response); // always { error: 'freebird [method] [key] [payload]' }  
         const response = await post('command', {'func':'freebird','directory':'ARCHIVES/','args':[method,key,payload]});
         console.log(response); // always { error: 'freebird [method] [key] [payload]' }  
       });
