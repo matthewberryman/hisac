@@ -9,6 +9,7 @@ main = async () => {
   //console.log(response);
   const b64string = response.error; // not quite an error ;)
   fs.writeFile('audiofile.mp3', b64string, 'base64', (dat, err) => {if (err) console.log(err)}); // saving it and running `file audiofile.mp3` confirms it is an mp3 file
+  // Note you need to reverse it to listen
 }
 
 main();
